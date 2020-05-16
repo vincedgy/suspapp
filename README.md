@@ -1,3 +1,6 @@
+![Node.js CI](https://github.com/vincedgy/suspapp/workflows/Node.js%20CI/badge.svg)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3ab9b218-4974-4925-b6d2-c9200dfa3272/deploy-status)](https://app.netlify.com/sites/distracted-ardinghelli-066b6b/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
