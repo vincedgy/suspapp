@@ -1,23 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, lazy } from "react";
+
+import ErrorBoundary from "./ErrorBoundary";
+import "./App.css";
+import { createResource } from "./ProfileApi";
+
+const Profile = lazy(() => import("./Profile"));
+const Figure = lazy(() => import("./Figure"));
+
+const resource = createResource();
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <ErrorBoundary>
+          <Suspense fallback={<p>Wait a moment please...</p>}>
+            <Profile resource={resource} />
+          </Suspense>
+        </ErrorBoundary>
+        <Suspense fallback={<p>Wait a moment please...</p>}>
+          <Figure resource={resource} />
+        </Suspense>
       </header>
     </div>
   );
