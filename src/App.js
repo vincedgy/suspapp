@@ -1,11 +1,8 @@
-import React, { Suspense, lazy } from "react";
+import React, { lazy, Suspense } from "react";
 
-import ErrorBoundary from "./ErrorBoundary";
 import "./App.css";
 import { createResource } from "./ProfileApi";
-
-const Profile = lazy(() => import("./Profile"));
-const Figure = lazy(() => import("./Figure"));
+const Home = lazy(() => import("./pages/Home"));
 
 const resource = createResource();
 
@@ -15,14 +12,8 @@ function App() {
       <header className="App-header">
         <h1>Suspense !</h1>
       </header>
-
-      <ErrorBoundary>
-        <Suspense fallback={<p>Wait a moment please...</p>}>
-          <Profile resource={resource} />
-        </Suspense>
-      </ErrorBoundary>
       <Suspense fallback={<p>Wait a moment please...</p>}>
-        <Figure resource={resource} />
+        <Home resource={resource} />
       </Suspense>
     </div>
   );
